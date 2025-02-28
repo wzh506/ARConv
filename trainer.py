@@ -21,7 +21,6 @@ torch.cuda.manual_seed(SEED)
 torch.cuda.manual_seed_all(SEED)
 cudnn.deterministic = True
 
-
 def save_checkpoint(
     model, optimizer, scheduler, epoch, save_path
 ):  # save model function
@@ -47,10 +46,9 @@ def save_checkpoint(
 def train(config):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     epochs, lr, ckpt, batch_size, hw_range, task, checkpoint_save_path = (
-        config.epochs,
-        config.lr,
+        config.epochs, config.lr, config.ckpt, config.batch_size,
+        config.hw_range, config.task, config.checkpoint_save_path
     )
-    config.ckpt, config.batch_size, config.hw_range, config.task, config.checkpoint_save_path
     train_set_path, checkpoint_path = config.train_set_path, config.checkpoint_path
     train_set = DataSet(file_path=train_set_path)
     training_data_loader = DataLoader(
@@ -146,8 +144,9 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--hw_range",
+        nargs=2,
+        type=int,
         default=[0, 18],
-        type=list,
         help="The range of the height and width.",
     )
     parser.add_argument("--use_pretrain", action="store_true", help="...")
