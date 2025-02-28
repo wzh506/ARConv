@@ -16,7 +16,6 @@ def get_edge(data):  # for training
             rs[i, :, :, :] = data[i, :, :, :] - cv2.boxFilter(data[i, :, :, :], -1, (5, 5))
     return rs
 
-
 class DataSet(data.Dataset):
     def __init__(self, file_path):
         super(DataSet, self).__init__()

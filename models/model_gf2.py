@@ -3,9 +3,9 @@ import torch.nn as nn
 import scipy.io as sio
 import os
 import torch.nn.functional as F
-class RectConv2d(nn.Module):
+class ARConv(nn.Module):
     def __init__(self, inc, outc, kernel_size=3, padding=1, stride=1, l_max=9, w_max=9, flag=False, modulation=True):
-        super(RectConv2d, self).__init__()
+        super(ARConv, self).__init__()
         self.lmax = l_max
         self.wmax = w_max
         self.inc = inc
@@ -98,13 +98,13 @@ class RectConv2d(nn.Module):
         m = self.m_conv(x)
         bias = self.b_conv(x)
         offset = self.p_conv(x * 100)
-        l = self.l_conv(offset) * 8 + 1  # b, 1, h, w
-        w = self.w_conv(offset) * 8 + 1  # b, 1, h, w
+        l = self.l_conv(offset) * 17 + 1  # b, 1, h, w
+        w = self.w_conv(offset) * 17 + 1  # b, 1, h, w
         if epoch <= 100:
             mean_l = l.mean(dim=0).mean(dim=1).mean(dim=1)
             mean_w = w.mean(dim=0).mean(dim=1).mean(dim=1)
-            N_X = int(mean_l // 1)
-            N_Y = int(mean_w // 1)
+            N_X = int(mean_l // 2)
+            N_Y = int(mean_w // 2)
             if N_X % 2 == 0:
                 N_X -= 1
             if N_Y % 2 == 0:
@@ -254,9 +254,9 @@ class RectB(nn.Module):
     def __init__(self, in_planes, flag=False):
         super(RectB, self).__init__()
         self.flag = flag
-        self.conv1 = RectConv2d(in_planes, in_planes, 3, 1, 1)
+        self.conv1 = ARConv(in_planes, in_planes, 3, 1, 1)
         self.relu = nn.ReLU(inplace=True)
-        self.conv2 = RectConv2d(in_planes, in_planes, 3, 1, 1)
+        self.conv2 = ARConv(in_planes, in_planes, 3, 1, 1)
 
     def forward(self, x, epoch, label1, label2, nx1, ny1, nx2, ny2):
         res = self.conv1(x, epoch, label1, nx1, ny1)
@@ -307,10 +307,9 @@ class ConvUp(nn.Module):
         x = F.leaky_relu(self.conv2(x))
         return x
 
-
-class RECTNET(nn.Module):
+class ARNet(nn.Module):
     def __init__(self):
-        super(RECTNET, self).__init__()
+        super(ARNet, self).__init__()
         self.head_conv = nn.Conv2d(5, 32, 3, 1, 1)
         self.rb1 = RectB(32, flag=True)
         self.down1 = ConvDown(32)
