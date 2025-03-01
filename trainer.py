@@ -6,14 +6,14 @@ import torch.backends.cudnn as cudnn
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
-from models.model_wv3 import ARNet as ARNet1
-from models.model_qb_gf2 import ARNet as ARNet2
 import numpy as np
 from tqdm import tqdm
 from torch.optim.lr_scheduler import StepLR
 import scipy.io as sio
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from utils.data import DataSet
+
+from .models import ARNet
 
 SEED = 0
 torch.manual_seed(SEED)
@@ -60,9 +60,11 @@ def train(config):
         drop_last=False,
     )
     if task == "wv3":
-        model = ARNet1().to(device)
-    else:
-        model = ARNet2().to(device)
+        pan_channels, lms_channels = 1, 8
+    elif task in ["qb", "gf2"]:
+        pan_channels, lms_channels = 1, 4
+
+    model = ARNet(pan_channels, lms_channels).to(device)
 
     model = nn.DataParallel(model)
     criterion = nn.L1Loss().to(device)
