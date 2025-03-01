@@ -14,3 +14,42 @@
 </div>
 
 Abstract: Recent advancements in convolutional neural network (CNN)-based techniques for remote sensing pansharpening have markedly enhanced image quality. However, conventional convolutional modules in these methods have two critical drawbacks. First, the sampling positions in convolution operations are confined to a fixed square window. Second, the number of sampling points is preset and remains unchanged. Given the diverse object sizes in remote sensing images, these rigid parameters lead to suboptimal feature extraction. To overcome these limitations, we introduce an innovative convolutional module, Adaptive Rectangular Convolution (ARConv). ARConv adaptively learns both the height and width of the convolutional kernel and dynamically adjusts the number of sampling points based on the learned scale. This approach enables ARConv to effectively capture scale-specific features of various objects within an image, optimizing kernel sizes and sampling locations. Additionally, we propose ARNet, a network architecture in which ARConv is the primary convolutional module. Extensive evaluations across multiple datasets reveal the superiority of our method in enhancing pansharpening performance over previous techniques. Ablation studies and visualization further confirm the efficacy of ARConv. The source code will be available at github.
+
+## 🛠 Getting started
+
+### Setup environment
+
+1. clone the repository
+
+```bash
+git clone git@github.com:WangXueyang-uestc/ARConv.git
+cd ARConv
+```
+2. install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Prepare dataset
+
+Datasets can be downloaded from the repo [liangjiandeng/PanCollection](https://github.com/liangjiandeng/PanCollection). Remember to replace `PATH TO TRAIN DATASET` in `.scripts` with the path to the dataset.
+
+## 🚀 Train the model
+
+```bash
+bash .scripts/train_{Datasets}.sh
+```
+
+## 👍 Additional Information
+
+**Weights:**
+- You can downloaded our trained weights from [Google Drive].
+
+**Metrics:**
+- Metrics are obtained using tools from [liangjiandeng/DLPan-Toolbox](https://github.com/liangjiandeng/DLPan-Toolbox) (specifically, the `02-Test-toolbox-for-traditional-and-DL(Matlab)` directory).
+
+
+## :e-mail: Contact
+
+If you have any questions, please email [`xywang uestc@std.uestc.edu.cn`](mailto:xywang uestc@std.uestc.edu.cn).
