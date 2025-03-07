@@ -44,7 +44,7 @@ bash .scripts/train_{Datasets}.sh
 ## 👍 Additional Information
 
 **Weights:**
-- You can downloaded our trained weights from [Google Drive].
+- You can downloaded our trained weights from [Baidu Skydisk](https://pan.baidu.com/s/1xFWSLX9611E2CukCpnOp1w?pwd=37ic code: 37ic).
 
 **Metrics:**
 - Metrics are obtained using tools from [liangjiandeng/DLPan-Toolbox](https://github.com/liangjiandeng/DLPan-Toolbox) (specifically, the `02-Test-toolbox-for-traditional-and-DL(Matlab)` directory).
