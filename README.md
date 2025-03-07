@@ -47,10 +47,13 @@ bash .scripts/train_{Datasets}.sh
 - You can downloaded our trained weights from https://pan.baidu.com/s/1xFWSLX9611E2CukCpnOp1w?pwd=37ic.
 
 **Metrics:**
-- MetricCode can be found [here](https://github.com/WangXueyang-uestc/ARConv/tree/main/MetricCode)
+- MetricCode can be found [here](https://github.com/WangXueyang-uestc/ARConv/tree/main/MetricCode).
 - You can alse use the tools from [liangjiandeng/DLPan-Toolbox](https://github.com/liangjiandeng/DLPan-Toolbox) (specifically, the `02-Test-toolbox-for-traditional-and-DL(Matlab)` directory).
 
 
 ## :e-mail: Contact
 
 If you have any questions, please email [`xywang_uestc@std.uestc.edu.cn`](mailto:xywang_uestc@std.uestc.edu.cn).
+
+**Parameter Count:**
+- Since we have pre-initialized all the convolutional kernels in the model, directly computing the parameter quantity would be huge and unreasonable. This is because only a small part of them is involved in each step of update. Therefore, if you want to know about the parameter quantity of the model, please calculate the parameters of the used convolutional kernels after fixing the number of convolutional kernel sampling points.
