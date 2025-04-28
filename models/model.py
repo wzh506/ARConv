@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from ARConv import ARConv
+from .ARConv import ARConv
 
 class ARConv_Block(nn.Module):
     def __init__(self, in_planes, flag=False):

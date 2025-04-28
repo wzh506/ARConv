@@ -1,1 +1,1 @@
-from .models import ARNet
+from .model import ARNet

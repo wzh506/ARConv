@@ -1,0 +1,13 @@
+epoch: 1 | train_loss: 0.021911022601048706
+epoch: 2 | train_loss: 0.015001710536460834
+epoch: 3 | train_loss: 0.013747064703095117
+epoch: 4 | train_loss: 0.01305070308827501
+epoch: 5 | train_loss: 0.012608226862013046
+epoch: 6 | train_loss: 0.012234772039320026
+epoch: 7 | train_loss: 0.011974387661259817
+epoch: 8 | train_loss: 0.011782676696097233
+epoch: 9 | train_loss: 0.011596204827870488
+epoch: 10 | train_loss: 0.011493375511092477
+epoch: 11 | train_loss: 0.011403091838522079
+epoch: 12 | train_loss: 0.011297850460610598
+epoch: 13 | train_loss: 0.011239982259882564

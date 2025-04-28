@@ -13,7 +13,7 @@ import scipy.io as sio
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from utils.data import DataSet
 
-from .models import ARNet
+from models import ARNet
 
 SEED = 0
 torch.manual_seed(SEED)
