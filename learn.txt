@@ -1,0 +1,4 @@
+
+
+1.训练代码
+bash scripts/train_wv3.sh

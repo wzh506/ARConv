@@ -1,5 +1,5 @@
 CUDA_VISIBLE_DEVICES=0 python trainer.py \
---batch_size 16 \
+--batch_size 96 \
 --epochs 600 \
 --lr 0.0006 \
 --ckpt 20 \

@@ -7,13 +7,13 @@
             "request": "launch",
             "program": "${workspaceFolder}/trainer.py",
             "args": [
-                "--batch_size", "16",
+                "--batch_size", "1",
                 "--epochs", "600",
                 "--lr", "0.0006",
                 "--ckpt", "20",
                 "--train_set_path", "/home/zhaohui1.wang/github/datasets/PanCollection/train_wv3.h5",
                 "--checkpoint_save_path", "/home/zhaohui1.wang/github/ARConv/output",
-                "--hw_range", "128", "1024",//不知道是多少
+                "--hw_range", "0", "18",//不知道是多少
                 "--task", "wv3"
             ],
             "env": {
